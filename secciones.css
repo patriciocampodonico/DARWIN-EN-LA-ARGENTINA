@@ -1,0 +1,111 @@
+/* Rediseño de secciones: pie de página en azul, Cuaderno de campo y Acerca de.
+   Se carga al final, después de mejoras.css. */
+.site{--gutter:4.16667cqw;--band:clamp(48px,5.2cqw,92px);--blue-10:#E8EBEF;--blue-40:#A3B0BE}
+
+/* ── Pie de página: azul de la tapa, texto en papel, filete de recorrido ── */
+.footer{background:var(--deep);color:var(--paper);border-top:0;padding-top:0}
+.footer-route{grid-column:1/-1;display:block;width:100%;height:34px;margin:26px 0 10px;overflow:visible}
+.footer-route path{fill:none;stroke:currentColor;stroke-width:1;vector-effect:non-scaling-stroke;opacity:.7}
+.footer-route ellipse{fill:currentColor}
+.footer h2,.notebook .footer h2{color:inherit}
+.footer a{color:inherit}
+.footer .footer-kicker{opacity:.8}
+.footer-bottom{border-top-color:#efeee63d}
+.footer-logos img{filter:invert(1)}
+.footer a:focus-visible,.footer summary:focus-visible{outline-color:var(--paper)}
+
+/* ── Cuaderno de campo ── */
+.notebook-main{padding-top:0;background:linear-gradient(#dbe2e8f5,#dbe2e8f5),url('assets/imgFondooooooo.png') left top/200% auto}
+.notebook-hero{position:relative;display:grid;grid-template-columns:46% 1fr;min-height:clamp(280px,27cqw,470px);margin:0 calc(-1*var(--gutter));background:var(--deep);color:var(--paper);overflow:hidden}
+.notebook-hero-panel{position:relative;z-index:1;align-self:center;padding:clamp(34px,4.4cqw,80px) clamp(20px,3cqw,56px) clamp(34px,4.4cqw,80px) var(--gutter)}
+.notebook-hero .eyebrow{opacity:.8;margin-bottom:clamp(14px,1.6cqw,26px)}
+.notebook .notebook-hero h1{font-weight:400;font-size:clamp(40px,5cqw,92px);line-height:1.1;letter-spacing:-.01em;margin:0 0 clamp(12px,1.4cqw,24px)}
+.notebook-hero-deck{font:italic 400 clamp(18px,1.9cqw,34px)/1.4 'Playfair Display',Georgia,serif;margin:0 0 clamp(14px,1.6cqw,26px)}
+.notebook-hero-copy{font-size:clamp(13px,1cqw,16px);line-height:1.6;margin:0;opacity:.85;max-width:420px}
+.notebook-hero-image{background:url('assets/cuaderno/06-flamencos.jpg') center 58%/cover no-repeat}
+.notebook-hero:after{content:'';position:absolute;top:0;bottom:0;left:46%;width:14%;background:linear-gradient(to right,#1a3a5c,#1a3a5c00);pointer-events:none}
+.notebook-hero-panel>*{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.notebook-hero-panel>:nth-child(2){animation-delay:.1s}.notebook-hero-panel>:nth-child(3){animation-delay:.2s}.notebook-hero-panel>:nth-child(4){animation-delay:.3s}
+
+/* Filtros fijos bajo el encabezado */
+.notebook-controls{position:sticky;top:var(--header-h);z-index:6;margin:0 calc(-1*var(--gutter)) 34px;padding:14px var(--gutter);border-top:0;border-bottom:1px solid #0a355e33;background:#dbe2e8f2;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.filter{background:#f7f5ee;border-color:#0a355e33}
+.filter:hover{background:#fff}
+
+/* Fichas: imagen a sangre, categoría como etiqueta, sin borde fino */
+.record-card{border:0;background:#f7f5ee;box-shadow:0 1px 0 #0a355e1f,0 8px 22px #0a355e14}
+.record-card:hover{border:0;box-shadow:0 1px 0 #0a355e1f,0 16px 34px #0a355e26}
+.record-media{position:relative;width:100%;overflow:hidden}
+.record-tag{position:absolute;left:0;top:16px;padding:7px 14px 7px 18px;background:var(--deep);color:var(--paper);font-size:10px;letter-spacing:.12em;line-height:1.3}
+.record-num{position:absolute;right:12px;top:16px;padding:7px 9px;background:#f7f5eeeb;color:var(--ink);font-size:10px;letter-spacing:.1em;line-height:1.3}
+.record-card-quote{display:none}
+
+/* Ficha destacada */
+.record-grid>li.featured{grid-column:span 2}
+.featured .record-card{flex-direction:row}
+.featured .record-media{flex:0 0 57%;width:57%}
+.featured .record-visual{aspect-ratio:auto;height:100%;min-height:340px}
+.featured .record-card-copy{justify-content:center;padding:clamp(24px,2.6cqw,48px)}
+.featured .record-card h2{font-size:clamp(28px,2.7cqw,46px);margin-bottom:14px}
+.featured .record-summary{font-size:14px;margin-bottom:20px}
+.featured .record-card-quote{display:block;margin:0 0 26px;padding-left:16px;border-left:2px solid var(--ink);font:400 italic clamp(16px,1.35cqw,22px)/1.5 'Playfair Display',Georgia,serif;color:var(--ink)}
+.featured .record-read{margin-top:0;align-self:flex-start}
+
+/* ── Acerca de ── */
+.about-main{padding:0}
+.about-main>section,.about-system>.about-row,.about-system>.editorial-piece{padding-left:var(--gutter);padding-right:var(--gutter)}
+.about-system{padding-left:0!important;padding-right:0!important}
+
+/* Apertura en azul, como la portada */
+.about-opening{background:var(--deep);color:var(--paper);padding-top:clamp(56px,7cqw,128px);padding-bottom:clamp(50px,6cqw,108px);gap:clamp(20px,2.6cqw,44px) 8%}
+.about-main .about-opening h1{color:inherit;font-weight:400;font-size:clamp(50px,6.6cqw,120px);line-height:1.05;letter-spacing:-.01em;margin:0}
+.about-opening .about-deck{font:italic 400 clamp(22px,2.4cqw,42px)/1.35 'Playfair Display',Georgia,serif;max-width:560px}
+.about-main .about-opening .about-opening-copy{color:#efeee6de;max-width:600px}
+
+/* Bandas */
+.about-row{border-top:0;padding-top:var(--band);padding-bottom:var(--band)}
+.about-row h2{font-size:clamp(27px,2.95cqw,48px);line-height:1.15}
+.about-prose,.system-opening>p{max-width:600px}
+.about-main p:not(.about-deck):not(.editorial-equation):not(.piece-number):not(.source-title){font-size:16px;line-height:1.75}
+.about-row[aria-labelledby=source-heading],.about-row[aria-labelledby=audience-heading]{background:var(--blue-10)}
+
+/* El sistema: banda azul completa */
+.about-system{background:var(--deep);color:var(--paper)}
+.about-main .about-system h2,.about-main .about-system h3{color:inherit}
+.about-system .system-opening{padding-bottom:clamp(30px,3cqw,54px)}
+.about-system .editorial-piece{border-top:1px solid #efeee62e;padding-top:clamp(36px,4cqw,70px);padding-bottom:clamp(40px,4.6cqw,80px)}
+.about-system .editorial-piece:last-child{padding-bottom:var(--band)}
+.about-system .piece-number{color:var(--blue-40)}
+.about-system .piece-copy h3{font-size:clamp(24px,2.5cqw,40px)}
+.about-system .piece-copy dl{border-top-color:#efeee633}
+.about-system .piece-copy dt{color:var(--blue-40)}
+.about-system .mockup{background:var(--paper)}
+
+/* La ecuación editorial, como banda propia */
+.editorial-equation{margin:var(--band) calc(-1*var(--gutter)) calc(-1*var(--band));padding:clamp(44px,5.4cqw,96px) var(--gutter);border:0;background:#0d2a47;color:var(--paper);font:400 clamp(21px,2.75cqw,50px)/1.3 'Playfair Display',Georgia,serif;letter-spacing:.02em;gap:.15em .45em}
+.editorial-equation span{color:var(--blue-40);font-weight:400}
+.about-credits{padding-bottom:var(--band)}
+
+/* ── Pantallas angostas ── */
+@media(max-width:1050px){
+  .featured .record-media{flex-basis:52%;width:52%}
+}
+@media(max-width:899px){
+  .notebook-hero{grid-template-columns:1fr;grid-template-rows:minmax(150px,26svh) auto}
+  .notebook-hero-image{grid-row:1}.notebook-hero-panel{grid-row:2}
+  .notebook-hero:after{display:none}
+  .editorial-equation{justify-content:flex-start}
+}
+@media(max-width:599px){
+  .site{--gutter:24px;--band:40px}
+  .notebook-controls{margin-bottom:24px;padding-top:10px;padding-bottom:10px;flex-direction:row;align-items:center}
+  #filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;min-width:0}#filters::-webkit-scrollbar{display:none}.filter{flex:none}
+  #result-count{display:none}
+  .record-grid>li.featured{grid-column:auto}
+  .featured .record-card{flex-direction:column}
+  .featured .record-media{flex:none;width:100%}
+  .featured .record-visual{aspect-ratio:4/3;height:auto;min-height:0}
+  .featured .record-card-copy{padding:24px 22px 20px}
+  .about-main{padding:0}
+  .about-main p:not(.about-deck):not(.editorial-equation):not(.piece-number):not(.source-title){font-size:15px}
+}

@@ -1,0 +1,61 @@
+DARWIN EN ARGENTINA — EXPLORAR Y CUADERNO DE CAMPO
+
+Abrir index.html en un navegador para usar el sitio.
+Conservar todos los archivos y la carpeta assets juntos al extraer el ZIP.
+
+Incluye nueve paradas con tarjetas de texto e imágenes originales de Figma.
+En computadora las tarjetas aparecen a la derecha; en pantallas angostas, debajo del mapa.
+Para cerrar una tarjeta, tocar fuera de ella, usar la X o la tecla Escape.
+
+Los contenidos de cada parada se editan en stops.js. Los estilos se editan en styles.css.
+Cuaderno de campo está disponible desde la navegación o abriendo cuaderno.html.
+Acerca de está disponible desde la navegación. Búsqueda queda pendiente.
+El período contemplado por las tarjetas es 1832–1834.
+
+Versión revisada a partir del archivo DARWIN de Figma, página 0:1.
+Incluye presentación, jerarquías de lectura, referencias y footer con créditos.
+Diseño y propuesta editorial: Patricio Campodonico y Martina Emma Calderón Calp.
+Mapa e imágenes generados con ChatGPT. Las ubicaciones son orientativas,
+no georreferenciadas; el mapa ilustrado no es cartografía a escala.
+
+CUADERNO DE CAMPO
+Incluye los 13 registros definidos por la dupla, sin nueva investigación.
+Los textos, categorías e imágenes se editan en registros.js.
+Cada imagen está pendiente (imagen: null). Para incorporarla, indicar su ruta local
+(por ejemplo assets/megatherium.png). Usar cianotipo azul en proporción 4:3.
+Las fichas, filtros y paneles se generan desde ese único array.
+Punta Alta pertenece a TERRITORIO y FÓSILES.
+Las citas se muestran entre comillas y separadas de la observación editorial.
+El panel se cierra con la cruz, Escape o al tocar afuera.
+
+ACERCA DE
+Textos y créditos editables en acerca.html; estilos propios en acerca.css.
+Los tres mockups se reemplazan cambiando el src de cada imagen en acerca.html:
+- assets/mockup-fasciculo.svg (proporción 210:148).
+- assets/mockup-mapa.svg (proporción 16:10).
+- assets/mockup-fichas.svg (composición de fichas, proporción 210:148).
+Se pueden usar archivos PNG, JPG o WebP, conservando el contenedor.
+Campos pendientes: design-credit y course-credit, dentro de acerca.html.
+
+MEJORAS DE EXPERIENCIA WEB (10/2026)
+Todo lo nuevo está en mejoras.css (estilos), site.js (menú, ampliar imágenes, aparición al hacer scroll)
+y en app.js / cuaderno.js. La versión anterior quedó en ../respaldo-antes-de-mejoras-2026-10-10.
+- Portada: toma la tapa del libro (panel azul + Beagle en San Julián). Imagen: assets/portada-san-julian.jpg.
+- Encabezado fijo; en pantallas angostas, menú desplegable.
+- Ruta sobre el mapa: une las paradas en el orden de las fichas. Es esquemática. Se edita en LEGS (app.js).
+- Tarjetas: botones Anterior / Siguiente (también flechas del teclado) y zoom suave hacia la parada.
+- Línea de tiempo bajo el mapa. Las fechas breves se editan en WHEN (app.js).
+- Conexión con el cuaderno: las etiquetas de «Qué observó» con ficha propia se definen en TAG_LINKS (app.js);
+  cada registro indica su parada del mapa en el campo parada de registros.js.
+  cuaderno.html#reg-06 abre una ficha; cuaderno.html#cat-FAUNA aplica un filtro.
+- Las ilustraciones se amplían a pantalla completa al tocarlas.
+- En celular la tarjeta es un panel inferior que se cierra arrastrando hacia abajo.
+
+REDISEÑO DE SECCIONES (10/2026) — secciones.css
+- Pie de página en el azul de la tapa, igual en las tres páginas, con la línea de recorrido como filete.
+  Los logos (assets/logo-*.png) son negros; en el pie se muestran en blanco por CSS.
+- Cuaderno: encabezado azul con ilustración (se cambia en .notebook-hero-image), filtros fijos,
+  fichas con imagen a sangre y etiqueta de categoría, y la primera ficha visible destacada a doble ancho.
+- Acerca de: apertura azul, bandas alternadas, la ecuación editorial como banda propia.
+  Los mockups y los créditos de diseño y cátedra siguen pendientes.
+Estado anterior a este rediseño: ../respaldo-antes-de-rediseno-secciones.

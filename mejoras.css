@@ -1,0 +1,240 @@
+/* Mejoras de experiencia web: portada, encabezado fijo, ruta, línea de tiempo,
+   recorrido entre fichas, conexiones con el cuaderno, movimiento y pantallas angostas.
+   Se carga después de styles.css / cuaderno.css / acerca.css y no cambia las coordenadas del mapa. */
+:root{--deep:#1A3A5C;--header-h:5.2cqw}
+html{scroll-behavior:smooth}
+.site{--header-h:clamp(58px,5.2cqw,92px)}
+
+/* ── Encabezado fijo, en papel ── */
+.header{position:sticky;inset:0 auto auto;top:0;left:auto;right:auto;z-index:20;height:var(--header-h);background-color:#efeee6f2;background-image:none;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #0a355e2e}
+.brand strong{font-size:clamp(17px,1.55cqw,27px);letter-spacing:.02em}
+.brand span{font-size:clamp(10px,.82cqw,14px);letter-spacing:.08em}
+.header nav{font-size:clamp(11px,.95cqw,16px);letter-spacing:.04em}
+.header nav a{position:relative;transition:opacity .15s}
+.header nav a:not(.current):after{content:'';position:absolute;left:0;right:0;bottom:5px;height:2px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
+.header nav a:not(.current):hover:after{transform:scaleX(1)}
+.nav-toggle{display:none}
+#mapa,.notebook-controls,.record-grid{scroll-margin-top:var(--header-h)}
+
+/* ── Portada: toma la tapa del libro (panel azul + imagen a sangre) ── */
+.cover{display:grid;grid-template-columns:51.4% 1fr;min-height:max(460px,min(70.5cqw,calc(100svh - var(--header-h))));background:var(--deep);color:var(--paper);overflow:hidden}
+.cover-panel{display:grid;grid-template-rows:auto 1fr auto;padding:clamp(28px,4.6cqw,84px) clamp(24px,3.8cqw,72px) clamp(26px,4cqw,72px) clamp(24px,5.7cqw,110px);min-width:0}
+.cover-mark{width:clamp(34px,4.1cqw,72px);height:clamp(34px,4.1cqw,72px);overflow:visible}
+.cover-mark circle,.cover-mark path{fill:none;stroke:currentColor;stroke-width:.25}
+.cover-mark .dot{fill:currentColor;stroke:none}
+.cover-heading{align-self:center;padding:clamp(18px,2.4cqw,44px) 0}
+.cover-author{margin:0 0 clamp(14px,2.2cqw,38px);font-size:clamp(13px,1.4cqw,24px);letter-spacing:.01em}
+.cover-title{margin:0;font:400 clamp(38px,5.35cqw,98px)/1.16 "Playfair Display",Georgia,serif;letter-spacing:-.01em;white-space:nowrap}
+.cover-subtitle{margin:clamp(14px,2cqw,36px) 0 0;font:italic 400 clamp(17px,2.15cqw,40px)/1.4 "Playfair Display",Georgia,serif}
+.cover-start{display:inline-flex;align-items:center;gap:.9em;margin-top:clamp(22px,3cqw,54px);padding:.95em 1.5em;border:1px solid #efeee6a6;border-radius:999px;color:inherit;text-decoration:none;font-size:clamp(12px,1cqw,17px);letter-spacing:.09em;text-transform:uppercase;transition:background .2s,color .2s}
+.cover-start span{font-size:1.25em;line-height:1;animation:nudge 1.8s ease-in-out infinite}
+.cover-start:hover,.cover-start:focus-visible{background:var(--paper);color:var(--deep)}
+.cover-start:focus-visible,.cover .cover-start:focus-visible{outline-color:var(--paper)}
+.cover-route{display:block;width:100%;height:clamp(18px,2.4cqw,44px);overflow:visible}
+.cover-route path{fill:none;stroke:currentColor;stroke-width:1;vector-effect:non-scaling-stroke;opacity:.75}
+.cover-route ellipse{fill:currentColor}
+.cover-range{display:flex;justify-content:space-between;gap:12px;margin:clamp(8px,.9cqw,16px) 0 0;font-size:clamp(10px,.92cqw,16px)}
+.cover-image{background:url('assets/portada-san-julian.jpg') center 42%/cover no-repeat;min-height:0}
+.cover-heading>*,.cover-mark,.cover-foot{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.cover-author{animation-delay:.08s}.cover-title{animation-delay:.16s}.cover-subtitle{animation-delay:.26s}.cover-start{animation-delay:.38s}.cover-foot{animation-delay:.5s}
+.cover-image{animation:unveil 1.4s ease-out both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes unveil{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+@keyframes nudge{0%,100%{transform:none}50%{transform:translateY(4px)}}
+
+/* ── Mapa: la lámina trae dibujada arriba la franja del encabezado original (7,2 cqw);
+   se recorta para que el mapa empiece limpio debajo de la portada. ── */
+#explorar{margin-top:-7.2cqw}
+.scene{clip-path:inset(7.2cqw 0 0 0)}
+#mapa{scroll-margin-top:calc(var(--header-h) - 7.2cqw)}
+.intro h2{margin:0;font-family:"Playfair Display",Georgia,serif;font-size:3.33333cqw;font-weight:600;line-height:1.23;color:var(--title);white-space:nowrap}
+.card{top:calc(7.2cqw + 20px);max-height:calc(100% - 7.2cqw - 40px)}
+.scene-zoom{position:absolute;inset:0;transition:transform .9s cubic-bezier(.3,.7,.2,1);will-change:transform}
+.scene-zoom.zoomed{transform:scale(1.08)}
+.scene-zoom .map-art{z-index:0}
+#markers{position:absolute;inset:0;z-index:2}
+/* La flor de la derecha acompaña el zoom del mapa al abrir una parada */
+.botanical-accent{transform-origin:right center;transition:transform .9s cubic-bezier(.3,.7,.2,1);will-change:transform}
+.card-open .botanical-accent{transform:scale(1.08)}
+
+/* Unión portada → mapa: la imagen de la portada se funde en azul y el azul se disuelve sobre el mapa */
+.cover{position:relative}
+.cover:after{content:'';position:absolute;left:0;right:0;bottom:0;height:clamp(40px,7cqw,130px);background:linear-gradient(to bottom,#1a3a5c00,#1a3a5cb3 70%,#1a3a5c);pointer-events:none}
+.cover-panel{position:relative;z-index:1}
+#explorar:before{content:'';position:absolute;left:0;right:0;top:calc(7.2cqw - 2px);height:clamp(36px,5.5cqw,104px);background:linear-gradient(to bottom,#1a3a5c,#1a3a5c80 22%,#1a3a5c2e 55%,#1a3a5c00);pointer-events:none;z-index:1}
+
+/* Ruta */
+.route{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible}
+.route path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.route-draw{stroke:#fff;stroke-width:12;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .75s ease-in-out;transition-delay:calc(var(--i)*.42s + .2s)}
+.in-view .route-draw{stroke-dashoffset:0}
+.route-halo{stroke:#092d54;stroke-width:5;opacity:.5;vector-effect:non-scaling-stroke;transition:opacity .3s}
+.route-line{stroke:#fff;stroke-width:1.8;opacity:.9;vector-effect:non-scaling-stroke;transition:opacity .3s,stroke-width .3s}
+.route-leg.sea .route-line{stroke-dasharray:2 7}
+.route-leg.done .route-line{opacity:1;stroke-width:2.6;stroke:#9ff0fb}.route-leg.done .route-halo{opacity:.85}
+
+/* Marcadores: pulso suave */
+.marker-icon:after{content:'';position:absolute;inset:-3px;border-radius:50%;border:2px solid #ffffffd9;opacity:0;animation:pulse 3.2s ease-out infinite;animation-delay:calc(var(--order,0)*.35s)}
+.marker:hover .marker-icon:after,.marker[aria-expanded=true] .marker-icon:after{animation:none}
+.marker-icon{transition:transform .2s,background .18s,box-shadow .18s,filter .18s}
+.marker:hover .marker-icon{box-shadow:inset 0 1px 3px #ffffffb3,0 0 0 6px #ffffff40,0 2px 6px #092d5433}
+@keyframes pulse{0%{transform:scale(.9);opacity:.85}70%,100%{transform:scale(1.9);opacity:0}}
+
+/* ── Tarjeta ── */
+.card{animation:card-in .42s cubic-bezier(.2,.75,.2,1)}
+.card.swap .card-scroll{animation:swap .34s ease-out}
+@keyframes card-in{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+@keyframes swap{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.card-scroll{flex:1;min-height:0}
+.card-grip{display:none}
+.observation-tags li:has(a){padding:0;border-color:var(--ink)}
+.observation-tags a{display:block;padding:5px 9px;border-radius:20px;text-decoration:none;font-weight:600;transition:background .15s,color .15s}
+.observation-tags a:hover,.observation-tags a:focus-visible{background:var(--ink);color:#fff}
+.related-records{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.related-records a{display:flex;align-items:center;gap:12px;padding:6px 10px 6px 6px;border:1px solid #0a355e26;background:#ffffff59;color:var(--ink);text-decoration:none;transition:border-color .15s,background .15s,transform .15s}
+.related-records a:hover,.related-records a:focus-visible{border-color:var(--ink);background:#fff;transform:translateX(3px)}
+.related-records img{width:56px;height:42px;object-fit:cover;flex:none}
+.related-records span{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.related-records small{font-size:9px;letter-spacing:.1em;color:#496174}
+.related-records b{font:600 14px/1.25 "Playfair Display",Georgia,serif;letter-spacing:.02em}
+.related-records i{font-style:normal;font-size:13px}
+.card-nav{flex:none;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #0a355e26;background:#efeee6}
+.card-nav button{display:flex;align-items:center;gap:10px;min-height:56px;padding:9px 14px;border:0;background:transparent;color:var(--ink);text-align:left;font-size:18px;min-width:0;transition:background .15s}
+.card-nav button+button{border-left:1px solid #0a355e26;justify-content:flex-end;text-align:right}
+.card-nav button:hover:not(:disabled){background:#0a355e10}
+.card-nav button:disabled{opacity:.38;cursor:default}
+.card-nav-text{display:flex;flex-direction:column;gap:2px;min-width:0}
+.card-nav small{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#496174}
+.card-nav b{font-size:12px;font-weight:600;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-nav button:focus-visible{outline-offset:-3px}
+
+/* Ilustraciones ampliables */
+.zoomable{position:relative;display:block;width:100%;padding:0;border:0;background:transparent;cursor:zoom-in;overflow:hidden}
+.zoomable img{transition:transform .5s ease}
+.zoomable:hover img{transform:scale(1.03)}
+.zoom-hint{position:absolute;right:20px;bottom:20px;padding:6px 10px;border-radius:999px;background:#092d54cc;color:#fff;font-size:10px;letter-spacing:.08em;opacity:0;transform:translateY(4px);transition:opacity .2s,transform .2s;pointer-events:none}
+.record-visual .zoom-hint{right:12px;bottom:12px}
+.zoomable:hover .zoom-hint,.zoomable:focus-visible .zoom-hint{opacity:1;transform:none}
+.record-visual .zoomable{height:100%}
+.lightbox{border:0;padding:0;margin:0;width:100vw;height:100dvh;max-width:none;max-height:none;background:#061d36f2;color:#efeee6;cursor:zoom-out}
+.lightbox[open]{display:grid;place-items:center;animation:fade .25s ease-out}
+.lightbox::backdrop{background:#061d36}
+.lightbox figure{margin:0;display:grid;gap:14px;justify-items:center;padding:56px 20px 24px;max-width:100%;max-height:100%}
+.lightbox img{display:block;max-width:min(94vw,1448px);max-height:calc(100dvh - 130px);width:auto;height:auto;box-shadow:0 20px 60px #0008;animation:grow .3s cubic-bezier(.2,.7,.2,1);cursor:default}
+.lightbox figcaption{font-size:12px;letter-spacing:.06em;text-align:center}
+.lightbox-close{position:absolute;top:12px;right:14px;width:46px;height:46px;border:1px solid #efeee666;border-radius:50%;background:transparent;color:inherit;font-size:28px;line-height:1}
+.lightbox-close:hover{background:#efeee622}.lightbox-close:focus-visible{outline-color:#efeee6}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes grow{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+
+/* ── Línea de tiempo ── */
+.timeline{background:var(--deep);color:var(--paper);padding:34px 4.16667% 30px}
+.timeline-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+.timeline-head h2{margin:0;font:400 clamp(22px,2cqw,32px)/1.2 "Playfair Display",Georgia,serif}
+.timeline-head p{margin:0;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+.timeline-track{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(9,minmax(0,1fr));position:relative}
+.timeline-track:before{content:'';position:absolute;left:0;right:0;top:35px;height:1px;background:#efeee673}
+.timeline-stop{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:7px;width:100%;height:100%;padding:0 10px 10px 0;border:0;background:transparent;color:inherit;text-align:left;opacity:.72;transition:opacity .2s}
+.timeline-stop:hover,.timeline-stop.current{opacity:1}
+.timeline-number{font-size:10px;letter-spacing:.12em}
+.timeline-dot{width:11px;height:11px;margin:6px 0 8px;border-radius:50%;border:1px solid var(--paper);background:var(--deep);position:relative;transition:background .2s,box-shadow .2s,transform .2s}
+.timeline-stop:hover .timeline-dot{background:var(--paper)}
+.timeline-stop.current .timeline-dot{background:#7fe9f7;border-color:#fff;transform:scale(1.25);box-shadow:0 0 0 5px #7fe9f733}
+.timeline-when{font-size:11px;letter-spacing:.05em}
+.timeline-name{font:400 clamp(13px,1.08cqw,17px)/1.25 "Playfair Display",Georgia,serif}
+.timeline-stop.current .timeline-name{text-decoration:underline;text-underline-offset:4px}
+.timeline-stop:focus-visible{outline-color:var(--paper)}
+
+/* ── Cuaderno ── */
+.record-card{transition:border-color .2s,box-shadow .25s,transform .25s}
+.record-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #0a355e1f}
+.record-card .record-visual img{transition:transform .6s ease}
+.record-card:hover .record-visual img{transform:scale(1.045)}
+.record-read{transition:transform .2s}.record-card:hover .record-read{transform:translateX(4px)}
+#record-dialog[open]{animation:panel-in .38s cubic-bezier(.2,.75,.2,1)}
+#record-dialog[open]::backdrop{animation:fade .3s ease-out}
+@keyframes panel-in{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+.record-map-link{display:flex;align-items:center;gap:10px;margin-top:28px;padding:15px 18px;background:var(--deep);color:var(--paper);text-decoration:none;font-size:13px;letter-spacing:.03em;transition:background .2s}
+.record-map-link[hidden]{display:none}
+.record-map-link span:nth-child(2){flex:1}
+.record-map-link span:last-child{transition:transform .2s}
+.record-map-link:hover{background:#0a2a47}.record-map-link:hover span:last-child{transform:translateX(4px)}
+
+/* ── Aparición al hacer scroll ── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease var(--reveal-delay,0ms),transform .6s cubic-bezier(.2,.7,.2,1) var(--reveal-delay,0ms)}
+.reveal.is-visible{opacity:1;transform:none}
+.record-grid>li.reveal.is-visible{transform:none}
+
+/* ── Pantallas angostas ── */
+@media(max-width:899px){
+  .site{--header-h:60px}
+  .header{position:sticky;height:var(--header-h);min-height:0;padding:0 14px 0 20px;flex-wrap:nowrap;align-items:center;gap:12px}
+  .brand strong{font-size:16px}.brand span{font-size:9.5px}.brand i{width:44px}
+  .nav-toggle{display:grid;place-items:center;width:44px;height:44px;border:0;background:transparent;color:var(--ink);flex:none}
+  .nav-toggle span,.nav-toggle span:before,.nav-toggle span:after{display:block;width:22px;height:2px;background:currentColor;transition:transform .25s,background .2s}
+  .nav-toggle span{position:relative}.nav-toggle span:before,.nav-toggle span:after{content:'';position:absolute;left:0}
+  .nav-toggle span:before{top:-7px}.nav-toggle span:after{top:7px}
+  .nav-toggle[aria-expanded=true] span{background:transparent}
+  .nav-toggle[aria-expanded=true] span:before{transform:translateY(7px) rotate(45deg)}
+  .nav-toggle[aria-expanded=true] span:after{transform:translateY(-7px) rotate(-45deg)}
+  .header nav{position:absolute;top:100%;left:0;right:0;width:auto;display:flex;flex-direction:column;align-items:stretch;gap:0;padding:6px 20px 14px;background:#efeee6;border-bottom:1px solid #0a355e40;box-shadow:0 14px 24px #092d541f;font-size:13px;visibility:hidden;opacity:0;transform:translateY(-8px);transition:opacity .2s,transform .2s,visibility .2s}
+  .header nav.open{visibility:visible;opacity:1;transform:none}
+  .header nav a{padding:15px 0;border-bottom:1px solid #0a355e1f}
+  .header nav a:after,.current:after{display:none}
+  .header .future,.header .search{display:none}
+
+  .cover{grid-template-columns:1fr;grid-template-rows:minmax(150px,34svh) auto;height:auto;min-height:calc(100svh - var(--header-h))}
+  .cover-image{grid-row:1;background-position:center 55%}
+  .cover-panel{grid-row:2;padding:26px 24px 26px;gap:22px}
+  .cover-mark{width:34px;height:34px}
+  .cover-heading{padding:0}
+  .cover-author{font-size:14px;margin-bottom:14px}
+  .cover-title{font-size:clamp(36px,11.5vw,56px);white-space:normal}
+  .cover-subtitle{font-size:19px;margin-top:14px}
+  .cover-start{font-size:12px;margin-top:24px}
+  .cover-range{font-size:10px}
+
+  #explorar{margin-top:0}.scene{clip-path:none}#explorar:before{top:0;height:44px}#mapa{scroll-margin-top:var(--header-h)}
+  .intro{top:auto}
+  .intro h2{font-size:36px;line-height:1.12}
+  .route-line{stroke-width:1.4}.route-halo{stroke-width:4}
+
+  /* Tarjeta como panel inferior */
+  .card{position:fixed;left:0;right:0;bottom:0;top:auto;width:auto;max-height:84svh;margin:0;z-index:30;border-radius:18px 18px 0 0;border:0;border-top:1px solid #0a355e33;box-shadow:0 -14px 40px #092d5440;animation:sheet-in .4s cubic-bezier(.2,.75,.2,1);transition:transform .2s}
+  .card-toolbar{position:relative;padding-top:16px;touch-action:none}
+  .card-grip{display:block;position:absolute;left:50%;top:7px;width:42px;height:4px;margin-left:-21px;border-radius:4px;background:#0a355e40}
+  .card-toolbar span.card-grip{font-size:0}
+  .card-image{max-height:none;object-fit:cover}
+  .card-nav button{min-height:60px}
+  .site:has(.card:not([hidden])){background:transparent}
+  @keyframes sheet-in{from{transform:translateY(100%)}to{transform:none}}
+
+  /* Línea de tiempo deslizable */
+  .timeline{padding:26px 0 22px}
+  .timeline-head{padding:0 24px;margin-bottom:16px}
+  .timeline-track{display:flex;overflow-x:auto;scroll-snap-type:x proximity;padding:0 24px 8px;scrollbar-width:none}
+  .timeline-track::-webkit-scrollbar{display:none}
+  .timeline-track:before{left:24px;right:auto;width:calc(9*132px)}
+  .timeline-track li{flex:0 0 132px;scroll-snap-align:start}
+  .timeline-name{font-size:14px}
+  .zoom-hint{opacity:1;transform:none}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none}.route-draw{stroke-dashoffset:0}.scene-zoom.zoomed,.card-open .botanical-accent{transform:none}}
+
+/* Marca: símbolo de la tapa + título, como en el libro */
+.brand{flex-direction:row;align-items:center;gap:clamp(10px,.9cqw,16px)}
+.brand-mark{flex:none;width:clamp(26px,2.25cqw,40px);height:clamp(26px,2.25cqw,40px);overflow:visible;transition:transform .5s cubic-bezier(.3,.7,.2,1)}
+.brand-mark circle,.brand-mark path{fill:none;stroke:currentColor;stroke-width:.32}
+.brand-mark .dot{fill:currentColor;stroke:none}
+.brand:hover .brand-mark{transform:rotate(90deg)}
+.brand strong{font-family:"Playfair Display",Georgia,serif;font-weight:400;font-size:clamp(19px,1.72cqw,31px);letter-spacing:-.005em;line-height:1.1;white-space:nowrap}
+@media(max-width:899px){.brand{gap:10px}.brand-mark{width:26px;height:26px}.brand strong{font-size:18px}}
+@media(max-width:359px){.brand strong{font-size:16px}}
+
+/* Logos institucionales en el pie, ambos en negro */
+.footer-logos{grid-column:1/-1;display:flex;align-items:center;gap:clamp(22px,2.6cqw,44px);padding-top:6px}
+.footer-logos img{display:block;width:auto;height:46px}
+.footer-logos .logo-catedra{height:38px}
+.notebook-footer .footer-logos{padding:0;margin-left:auto}
+.notebook-footer .footer-logos img{height:36px}.notebook-footer .footer-logos .logo-catedra{height:30px}
+@media(max-width:599px){.footer-logos img{height:40px}.footer-logos .logo-catedra{height:33px}.notebook-footer .footer-logos{margin-left:0}}
