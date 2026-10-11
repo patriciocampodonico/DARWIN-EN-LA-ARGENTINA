@@ -61,6 +61,7 @@
     for (const key of ['x','y','lx','ly']) button.style.setProperty('--'+key, stop[key]);
     button.style.setProperty('--order', stops.indexOf(stop));
     const icon = el('span', 'marker-icon'); icon.setAttribute('aria-hidden', 'true');
+    icon.dataset.n = stops.indexOf(stop) + 1; // número de parada, visible cuando el punto está activo
     button.append(icon, el('span', 'marker-label', stop.label));
     button.addEventListener('click', () => open(stop.id));
     markers.append(button);

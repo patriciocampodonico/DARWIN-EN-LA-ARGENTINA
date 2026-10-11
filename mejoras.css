@@ -238,3 +238,7 @@ html{scroll-behavior:smooth}
 .notebook-footer .footer-logos{padding:0;margin-left:auto}
 .notebook-footer .footer-logos img{height:36px}.notebook-footer .footer-logos .logo-catedra{height:30px}
 @media(max-width:599px){.footer-logos img{height:40px}.footer-logos .logo-catedra{height:33px}.notebook-footer .footer-logos{margin-left:0}}
+
+/* Punto activo: muestra el número de la parada en el orden del recorrido */
+.marker-icon:before{content:attr(data-n);position:absolute;inset:0;display:grid;place-items:center;color:#fff;font:700 17px/1 Inter,Arial,sans-serif;text-shadow:0 1px 3px #092d54b3;opacity:0;transform:scale(.6);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1.4)}
+.marker[aria-expanded=true] .marker-icon:before{opacity:1;transform:none}
