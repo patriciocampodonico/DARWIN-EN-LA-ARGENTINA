@@ -109,3 +109,7 @@
   .about-main{padding:0}
   .about-main p:not(.about-deck):not(.editorial-equation):not(.piece-number):not(.source-title){font-size:15px}
 }
+
+/* Mockup real del fascículo: foto a sangre en su marco */
+.about-system .mockup-fasciculo{aspect-ratio:3/2;background:none}
+.mockup-fasciculo img{object-fit:cover}
