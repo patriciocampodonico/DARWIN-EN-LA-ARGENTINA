@@ -111,5 +111,5 @@
 }
 
 /* Mockup real del fascículo: foto a sangre en su marco */
-.about-system .mockup-fasciculo{aspect-ratio:3/2;background:none}
-.mockup-fasciculo img{object-fit:cover}
+.about-system .mockup-fasciculo,.about-system .mockup-mapa{aspect-ratio:3/2;background:none}
+.mockup-fasciculo img,.mockup-mapa img{object-fit:cover}
