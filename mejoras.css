@@ -242,3 +242,12 @@ html{scroll-behavior:smooth}
 /* Punto activo: muestra el número de la parada en el orden del recorrido */
 .marker-icon:before{content:attr(data-n);position:absolute;inset:0;display:grid;place-items:center;color:#fff;font:700 17px/1 Inter,Arial,sans-serif;text-shadow:0 1px 3px #092d54b3;opacity:0;transform:scale(.6);transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1.4)}
 .marker[aria-expanded=true] .marker-icon:before{opacity:1;transform:none}
+
+/* Solo celular: puntos del mapa más chicos y margen izquierdo en la línea de tiempo */
+@media(max-width:899px){
+  .marker-icon{left:4px;top:4px;transform:scale(.58);border-width:3px}
+  .marker-icon:before{font-size:20px}
+  .marker-label{left:calc((var(--lx) - var(--x))/700*100cqw + 11px);top:calc((var(--ly) - var(--y))/700*100cqw + 15px)}
+  .timeline-track{scroll-snap-type:none;padding-left:24px}
+  .timeline-track li{scroll-snap-align:none}
+}
