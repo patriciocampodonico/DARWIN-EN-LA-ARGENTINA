@@ -123,3 +123,8 @@
 /* Mockup real de las fichas de campo */
 .about-system .mockup-fichas{aspect-ratio:1774/887;background:none}
 .mockup-fichas img{object-fit:cover}
+
+/* Mockups: libro y notebook más bajos (se recorta arriba y abajo), fichas sin marco de papel, puntas redondeadas */
+.about-system .mockup-fasciculo,.about-system .mockup-mapa{aspect-ratio:16/9}
+.about-system .mockup{background:none;border-radius:12px;overflow:hidden}
+.about-system .mockup img{object-fit:cover;border-radius:12px}
