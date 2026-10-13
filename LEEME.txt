@@ -59,3 +59,10 @@ REDISEÑO DE SECCIONES (10/2026) — secciones.css
 - Acerca de: apertura azul, bandas alternadas, la ecuación editorial como banda propia.
   Los mockups y los créditos de diseño y cátedra siguen pendientes.
 Estado anterior a este rediseño: ../respaldo-antes-de-rediseno-secciones.
+
+MAPA CON GEOMETRÍA REAL (10/2026)
+El mapa de Explorar es assets/mapa-argentina.png: límites provinciales del Instituto Geográfico Nacional,
+proyección Mercator transversa (meridiano central 64° O), con la paleta y el papel del mapa anterior.
+Las paradas (x, y en stops.js) salen de sus coordenadas geográficas. lx, ly son la esquina de cada etiqueta.
+El programa que genera el mapa y el mapa anterior están en ../mapa-nuevo-prueba (mapa.py, mapa-anterior.png).
+assets/imgFondooooooo.png (mapa anterior) se sigue usando solo como textura de fondo en Cuaderno y Acerca de.

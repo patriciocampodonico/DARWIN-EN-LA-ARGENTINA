@@ -251,3 +251,17 @@ html{scroll-behavior:smooth}
   .timeline-track{scroll-snap-type:none;padding-left:24px}
   .timeline-track li{scroll-snap-align:none}
 }
+
+/* Mapa con geometría real: las paradas del sudoeste bonaerense quedan a pocos kilómetros entre sí,
+   así que los puntos son más chicos para que no se pisen. */
+.site{--dot:.55}
+.marker-icon{left:calc(50% - 1.31944cqw*var(--dot));top:calc(50% - 1.31944cqw*var(--dot));transform:scale(calc(var(--marker-scale,1)*var(--dot)));border-width:3px}
+.marker-icon:before{font-size:21px}
+.marker{width:2.2cqw;height:2.2cqw}
+.marker-label{left:calc((var(--lx) - var(--x))/1440*100cqw + 1.1cqw);top:calc((var(--ly) - var(--y))/1440*100cqw + 1.1cqw)}
+@media(max-width:899px){
+  .marker{width:26px;height:26px}
+  .marker-icon{left:5px;top:5px;transform:scale(.42);border-width:4px}
+  .marker-icon:before{font-size:24px}
+  .marker-label{left:calc((var(--lx) - var(--x))/700*100cqw + 13px);top:calc((var(--ly) - var(--y))/700*100cqw + 13px)}
+}

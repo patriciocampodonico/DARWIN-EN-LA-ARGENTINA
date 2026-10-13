@@ -33,10 +33,10 @@
   // Tramos de la ruta, en el orden de las fichas. Los de mar se curvan hacia el Atlántico.
   // Trazado esquemático: une las paradas, no reproduce la derrota real.
   const LEGS = [
-    {from: 0, to: 1, sea: true, bend: [870, 705]},
+    {from: 0, to: 1, sea: true, bend: [850, 705]},
     {from: 1, to: 2}, {from: 2, to: 3}, {from: 3, to: 4}, {from: 4, to: 5}, {from: 5, to: 6},
-    {from: 5, to: 7, sea: true, bend: [930, 560]},
-    {from: 7, to: 8, sea: true, bend: [742, 716]}
+    {from: 5, to: 7, sea: true, bend: [905, 560]},
+    {from: 7, to: 8, sea: true, bend: [712, 722]}
   ];
 
   const el = (tag, className, text) => {
