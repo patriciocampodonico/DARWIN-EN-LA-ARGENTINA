@@ -119,3 +119,7 @@
 .footer-bottom{border-top-color:#00000026}
 .footer-logos img{filter:none}
 .footer a:focus-visible,.footer summary:focus-visible{outline-color:#000}
+
+/* Mockup real de las fichas de campo */
+.about-system .mockup-fichas{aspect-ratio:1774/887;background:none}
+.mockup-fichas img{object-fit:cover}
