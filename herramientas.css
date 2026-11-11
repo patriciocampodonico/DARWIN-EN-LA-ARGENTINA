@@ -51,3 +51,24 @@
   .search-box input{font-size:16px}
 }
 @media(prefers-reduced-motion:reduce){.search-dialog[open]{animation:none}.toast{transition:none}}
+
+/* Pantallas de más de 1920 px: el contenido queda en 1920 px y cada franja
+   extiende su color hasta los bordes, para que los costados no queden vacíos. */
+@media(min-width:1921px){
+  .site>*:not(#explorar),.site main>section:not(.intro),.about-row,.notebook-controls{box-shadow:0 0 0 100vmax var(--side,transparent);clip-path:inset(0 -100vmax)}
+  .site .header{--side:#efeee6f2}
+  /* La línea inferior del encabezado y de los filtros también llega a los bordes. */
+  .site .header,.notebook-controls{box-shadow:0 0 0 100vmax var(--side),0 1px 0 100vmax var(--line,#0a355e40);clip-path:inset(0 -100vmax -1px)}
+  .cover,.timeline,.notebook-hero,.about-opening,.about-system{--side:var(--deep)}
+  /* El mapa sube bajo la portada (margin-top negativo): su relleno empieza donde termina la portada, con el mismo degradé. */
+  body{overflow-x:clip}
+  #explorar:after{content:'';position:absolute;z-index:-1;top:7.2cqw;bottom:0;left:-100vmax;right:-100vmax;background:linear-gradient(#1a3a5c,#1a3a5c80 23px,#1a3a5c2e 57px,#1a3a5c00 104px),#dfded6}
+  .map-legend{--side:#efeee6}
+  .footer{--side:#fff}
+  .notebook-main{--side:#dbe2e8}
+  .notebook-controls{--side:#dbe2e8f2;--line:#0a355e33}
+  .about-main{--side:#f5f4ef}
+  .about-row[aria-labelledby=source-heading],.about-row[aria-labelledby=audience-heading]{--side:var(--blue-10)}
+  /* Las ilustraciones de portada se funden en el azul en su borde derecho. */
+  .cover-image,.notebook-hero-image{-webkit-mask-image:linear-gradient(to left,#0000,#000 12%);mask-image:linear-gradient(to left,#0000,#000 12%)}
+}
