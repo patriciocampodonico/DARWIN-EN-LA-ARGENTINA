@@ -3,28 +3,28 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(font-0.woff2) format('truetype');
+  src: url(fraunces.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(font-1.woff2) format('truetype');
+  src: url(inter-400.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url(font-2.woff2) format('truetype');
+  src: url(inter-600.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(font-3.woff2) format('truetype');
+  src: url(inter-700.woff2) format('woff2');
 }
 
 @font-face {
@@ -32,7 +32,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url(playfair-display-semibold.ttf) format('truetype');
+  src: url(playfair-display-semibold.woff2) format('woff2');
 }
 
 @font-face {
@@ -40,12 +40,12 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(playfair-display.ttf) format('truetype');
+  src: url(playfair-display.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Playfair Display';
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url(playfair-display-italic.ttf) format('truetype');
+  src: url(playfair-display-italic.woff2) format('woff2');
 }

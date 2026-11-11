@@ -208,6 +208,10 @@
   prev.addEventListener('click', () => step(-1));
   next.addEventListener('click', () => step(1));
   document.querySelector('#close-card').addEventListener('click', () => close());
+  document.querySelector('#card-share').addEventListener('click', () => {
+    const stop = stops.find(s => s.id === active); if (!stop) return;
+    window.darwinShare?.({title: stop.title + ' — Darwin en la Argentina', text: stop.title + ', ' + stop.date + '.', url: new URL('index.html#' + stop.id, location.href).href});
+  });
   document.addEventListener('click', event => {
     if (!active || card.contains(event.target) || event.target.closest('.marker, .timeline, dialog')) return;
     close(false);

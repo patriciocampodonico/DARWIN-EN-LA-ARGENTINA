@@ -99,6 +99,10 @@
     filters.append(button);
   }
   document.querySelector('#record-close').addEventListener('click', () => dialog.close());
+  document.querySelector('#record-share').addEventListener('click', () => {
+    const record = records.find(r => '#reg-' + r.id === location.hash); if (!record) return;
+    window.darwinShare?.({title: 'REG. ' + record.id + ' · ' + record.nombre + ' — Darwin en la Argentina', text: record.resumen, url: new URL('cuaderno.html#reg-' + record.id, location.href).href});
+  });
   // Require both press and release outside, so dragging text does not close the panel.
   let outsidePress = false;
   const outside = event => {

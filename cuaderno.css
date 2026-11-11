@@ -1,5 +1,5 @@
 .notebook{background:var(--paper);color:var(--ink)}
-.notebook-main{padding:54px 4.16667% 64px;background:linear-gradient(#efeee6ed,#efeee6ed),url('assets/imgFondooooooo.png') left top/200% auto}
+.notebook-main{padding:54px 4.16667% 64px;background:linear-gradient(#efeee6ed,#efeee6ed),url('assets/fondo-papel.webp') left top/200% auto}
 .notebook-intro{max-width:720px;margin-bottom:38px}
 .eyebrow{font-size:10px;letter-spacing:.18em;margin:0 0 14px}
 .notebook h1,.notebook h2,.notebook h3{font-family:'Playfair Display',Georgia,serif;font-weight:600}

@@ -22,7 +22,7 @@ CUADERNO DE CAMPO
 Incluye los 13 registros definidos por la dupla, sin nueva investigación.
 Los textos, categorías e imágenes se editan en registros.js.
 Cada imagen está pendiente (imagen: null). Para incorporarla, indicar su ruta local
-(por ejemplo assets/megatherium.png). Usar cianotipo azul en proporción 4:3.
+(por ejemplo assets/cuaderno/01-megatherium.webp). Usar cianotipo azul en proporción 4:3.
 Las fichas, filtros y paneles se generan desde ese único array.
 Punta Alta pertenece a TERRITORIO y FÓSILES.
 Las citas se muestran entre comillas y separadas de la observación editorial.
@@ -40,7 +40,7 @@ Campos pendientes: design-credit y course-credit, dentro de acerca.html.
 MEJORAS DE EXPERIENCIA WEB (10/2026)
 Todo lo nuevo está en mejoras.css (estilos), site.js (menú, ampliar imágenes, aparición al hacer scroll)
 y en app.js / cuaderno.js. La versión anterior quedó en ../respaldo-antes-de-mejoras-2026-10-10.
-- Portada: toma la tapa del libro (panel azul + Beagle en San Julián). Imagen: assets/portada-san-julian.jpg.
+- Portada: toma la tapa del libro (panel azul + Beagle en San Julián). Imagen: assets/portada-san-julian.webp.
 - Encabezado fijo; en pantallas angostas, menú desplegable.
 - Ruta sobre el mapa: une las paradas en el orden de las fichas. Es esquemática. Se edita en LEGS (app.js).
 - Tarjetas: botones Anterior / Siguiente (también flechas del teclado) y zoom suave hacia la parada.
@@ -61,8 +61,21 @@ REDISEÑO DE SECCIONES (10/2026) — secciones.css
 Estado anterior a este rediseño: ../respaldo-antes-de-rediseno-secciones.
 
 MAPA CON GEOMETRÍA REAL (10/2026)
-El mapa de Explorar es assets/mapa-argentina.png: límites provinciales del Instituto Geográfico Nacional,
+El mapa de Explorar es assets/mapa-argentina.webp: límites provinciales del Instituto Geográfico Nacional,
 proyección Mercator transversa (meridiano central 64° O), con la paleta y el papel del mapa anterior.
 Las paradas (x, y en stops.js) salen de sus coordenadas geográficas. lx, ly son la esquina de cada etiqueta.
 El programa que genera el mapa y el mapa anterior están en ../mapa-nuevo-prueba (mapa.py, mapa-anterior.png).
-assets/imgFondooooooo.png (mapa anterior) se sigue usando solo como textura de fondo en Cuaderno y Acerca de.
+assets/fondo-papel.webp (mapa anterior) se sigue usando solo como textura de fondo en Cuaderno y Acerca de.
+
+LIVIANA, BUSCADOR, COMPARTIR E ÍCONO (11/2026) — herramientas.css y site.js
+- Imágenes en WebP: el sitio pasó de 52 MB a menos de 9 MB. Las ilustraciones van a 1100 px de ancho
+  (parada-NN.webp para el mapa, cuaderno/NN-nombre.webp para las fichas); el mapa a 2880 px.
+  Para sumar una imagen nueva, exportarla en WebP o JPG a ese ancho, no en PNG.
+- Fuentes en woff2 y solo con los caracteres del español.
+- Buscador (lupa del encabezado, Ctrl+K o la tecla /): busca en las paradas (stops.js) y las fichas
+  (registros.js), por eso las tres páginas cargan esos dos archivos. En el celular es la fila BUSCAR del menú.
+- Compartir: botón en la tarjeta de cada parada y en cada ficha. En el celular abre el menú del sistema;
+  en la computadora copia el link (index.html#parada o cuaderno.html#reg-NN).
+- Vista previa al pasar el link (WhatsApp, redes): etiquetas og: en cada página e imagen assets/compartir.jpg
+  (1200 × 630). Las etiquetas usan la dirección completa del sitio: si cambia el link, hay que cambiarlas.
+- Ícono de la pestaña: favicon.svg, favicon-32.png y apple-touch-icon.png (el círculo del logo).

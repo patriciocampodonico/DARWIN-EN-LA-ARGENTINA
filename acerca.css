@@ -1,5 +1,5 @@
 .about-page{background:var(--paper);color:var(--ink)}
-.about-main{padding:0 4.16667%;background-color:var(--paper);background-image:url('assets/imgFondooooooo.png');background-size:600% auto;background-position:left top;background-blend-mode:soft-light}
+.about-main{padding:0 4.16667%;background-color:var(--paper);background-image:url('assets/fondo-papel.webp');background-size:600% auto;background-position:left top;background-blend-mode:soft-light}
 .about-main h1,.about-main h2,.about-main h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;color:var(--title)}
 .about-opening{padding:76px 0 70px;display:grid;grid-template-columns:1fr 1.5fr;gap:24px 8%}
 .about-opening h1{grid-column:1/-1;font-size:clamp(40px,4.8cqw,70px);line-height:1.1;margin:0 0 12px}

@@ -8,11 +8,11 @@
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
 /* Editorial refinement: preserve the map and marker coordinates. */
-.header{height:7.2cqw;gap:4cqw;padding-right:4.16667cqw;background-color:var(--paper);background-image:linear-gradient(#efeee638,#efeee638),url('assets/imgFondooooooo.png');background-size:auto,400% auto;background-position:center,left 12%;border-bottom:1px solid #0a355e40}
+.header{height:7.2cqw;gap:4cqw;padding-right:4.16667cqw;background-color:var(--paper);background-image:linear-gradient(#efeee638,#efeee638),url('assets/fondo-papel.webp');background-size:auto,400% auto;background-position:center,left 12%;border-bottom:1px solid #0a355e40}
 .brand{flex-shrink:0;gap:.28cqw}.brand strong{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:1.8cqw;letter-spacing:.01em}
 .header nav{gap:2.6cqw;font-size:1.04cqw}.header nav a{padding:12px 0}.current:after{bottom:5px;height:2px}.header .future{color:#3f5970}.search{margin-left:.3cqw}
 .card{top:calc(7.2cqw + 20px);max-height:calc(100% - 7.2cqw - 10cqw)}
-.botanical-accent{position:absolute;right:0;top:25%;width:26%;height:62%;background-image:url('assets/botanica-ceibo.png');background-repeat:no-repeat;background-size:contain;background-position:right center;opacity:.40;pointer-events:none;user-select:none;z-index:0}
+.botanical-accent{position:absolute;right:0;top:25%;width:26%;height:62%;background-image:url('assets/botanica-ceibo.webp');background-repeat:no-repeat;background-size:contain;background-position:right center;opacity:.40;pointer-events:none;user-select:none;z-index:0}
 @media(max-width:899px){
  .header{height:auto;min-height:112px;padding:20px 24px 14px;flex-wrap:wrap;gap:16px;background-size:auto,400% auto}
  .brand{gap:4px}.brand strong{font-size:20px}.header nav{width:100%;justify-content:space-between;gap:12px;font-size:11px}.header .future{display:inline}.header .search{display:block;margin:0}.search img{width:18px;height:18px}.header nav a{padding:7px 0}.current:after{bottom:0}

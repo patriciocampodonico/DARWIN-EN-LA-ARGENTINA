@@ -34,7 +34,7 @@ html{scroll-behavior:smooth}
 .cover-route path{fill:none;stroke:currentColor;stroke-width:1;vector-effect:non-scaling-stroke;opacity:.75}
 .cover-route ellipse{fill:currentColor}
 .cover-range{display:flex;justify-content:space-between;gap:12px;margin:clamp(8px,.9cqw,16px) 0 0;font-size:clamp(10px,.92cqw,16px)}
-.cover-image{background:url('assets/portada-san-julian.jpg') center 42%/cover no-repeat;min-height:0}
+.cover-image{background:url('assets/portada-san-julian.webp') center 42%/cover no-repeat;min-height:0}
 .cover-heading>*,.cover-mark,.cover-foot{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
 .cover-author{animation-delay:.08s}.cover-title{animation-delay:.16s}.cover-subtitle{animation-delay:.26s}.cover-start{animation-delay:.38s}.cover-foot{animation-delay:.5s}
 .cover-image{animation:unveil 1.4s ease-out both}
